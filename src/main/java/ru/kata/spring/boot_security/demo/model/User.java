@@ -21,14 +21,14 @@ public class User implements UserDetails {
     private String name;
     private String lastname;
     private Integer age;
-    private String username;
+    private String email;
     private String password;
 
-    public User(String name, String lastname, Integer age, String username, String password) {
+    public User(String name, String lastname, Integer age, String email, String password) {
         this.name = name;
         this.lastname = lastname;
         this.age = age;
-        this.username = username;
+        this.email = email;
         this.password = password;
     }
 
@@ -90,7 +90,7 @@ public class User implements UserDetails {
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.email = username;
     }
 
     public void setPassword(String password) {
@@ -120,9 +120,8 @@ public class User implements UserDetails {
         return password;
     }
 
-    @Override
     public String getUsername() {
-        return username;
+        return email;
     }
 
     @Override

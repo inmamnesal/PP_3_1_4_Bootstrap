@@ -43,11 +43,11 @@ public class AdminUserController {
     public String saveUser(@RequestParam(value = "name") String name,
                            @RequestParam(value = "lastname") String lastname,
                            @RequestParam(value = "age")  int age,
-                           @RequestParam(value = "username") String username,
+                           @RequestParam(value = "email") String email,
                            @RequestParam(value = "password") String password,
                            @RequestParam(value = "roles") String role) {
         String encodedPassword = userService.encode(password);
-        User user = new User(name, lastname, age, username, encodedPassword);
+        User user = new User(name, lastname, age, email, encodedPassword);
         user.setUserRole(userService.getRoleByName(role));
         userService.saveUser(user);
         return "redirect:/admin";
@@ -69,14 +69,14 @@ public class AdminUserController {
                                  @RequestParam(value = "name") String name,
                                  @RequestParam(value = "lastname") String lastname,
                                  @RequestParam(value = "age")  int age,
-                                 @RequestParam(value = "username") String username,
+                                 @RequestParam(value = "email") String email,
                                  @RequestParam(value = "password") String password,
                                  @RequestParam(value = "roles") String role){
         User user = userService.getUserById(id);
         user.setName(name);
         user.setLastname(lastname);
         user.setAge(age);
-        user.setUsername(username);
+        user.setUsername(email);
         if(password != null) {
             String encodedPassword = userService.encode(password);
             user.setPassword(encodedPassword);}

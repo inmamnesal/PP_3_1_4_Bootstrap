@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -39,7 +40,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user/**").hasAnyRole("ADMIN", "USER")
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().successHandler(successUserHandler)
+//                .formLogin().successHandler(successUserHandler)
+                .formLogin().loginPage("/login")
+                    .loginProcessingUrl("/process_login")
+//                    .defaultSuccessUrl("/user",false)
+                    .successHandler(myAuthenticationSuccessHandler())
+                    .failureUrl("/login?error")
                 .permitAll()
                 .and()
                 .logout().logoutSuccessUrl("/login")
@@ -53,6 +59,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         authenticationProvider.setPasswordEncoder(passwordEncoder);
         authenticationProvider.setUserDetailsService(userDetailsService);
         return authenticationProvider;
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler myAuthenticationSuccessHandler(){
+        return new MySimpleUrlAuthenticationSuccessHandler();
     }
 
 

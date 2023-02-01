@@ -14,6 +14,6 @@ public interface UserDao {
     void updateUser(User user);
     public String encode(CharSequence password);
     User getUserById(long id);
-    User findByUsername (String username);
+    User findByEmail(String email);
     User getPrincipalUser();
 }

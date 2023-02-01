@@ -18,16 +18,16 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         this.userService = userService;
     }
 
-    public User findByUsername (String username) {
-        return userService.findByUsername(username);
+    public User findByEmail(String email) {
+        return userService.findByEmail(email);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = findByUsername(username);
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user = findByEmail(email);
         if (user == null) {
-            throw new UsernameNotFoundException(String.format("User '%s' not found", username));
+            throw new UsernameNotFoundException(String.format("User '%s' not found", email));
         }
         return user;
     }

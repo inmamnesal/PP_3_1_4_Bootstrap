@@ -10,7 +10,7 @@ public interface UserService extends UserDao {
     List<User> getAllUsers ();
 
     @Override
-    User findByUsername(String username);
+    User findByEmail(String email);
 
     @Override
     void saveUser(User user);

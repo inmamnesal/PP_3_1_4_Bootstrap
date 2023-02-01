@@ -66,7 +66,7 @@
                                                 <th style="color:black" scope="col">Name</th>
                                                 <th style="color:black" scope="col">Lastname</th>
                                                 <th style="color:black" scope="col">Age</th>
-                                                <th style="color:black" scope="col">Username</th>
+                                                <th style="color:black" scope="col">Email</th>
                                                 <th style="color:black" scope="col">Role</th>
                                                 <th style="color:black" scope="col">Edit</th>
                                                 <th style="color:black" scope="col">Delete</th>
@@ -139,7 +139,8 @@
                                                                             <input type="text" class="form-control input-lg" name="name" value="">
                                                                         </div>
                                                                     </div>-->
-                                                                    <div class="d-grid gap-1 text-center fw-bold w-50 mx-auto">
+                                                                    <div class="d-grid gap-0.1 text-center fw-bold w-50 mx-auto">
+<!--                                                                    <div class="mb-md-5 mt-md-4 pb-5">-->
                                                                         <div class="form-group">
                                                                             <label for="userId" class="control-label">id</label>
                                                                             <input type="text" class="form-control input-sm" readonly id="userId" th:placeholder="${user.getId()}">
@@ -157,8 +158,8 @@
                                                                             <input type="number" class="form-control" name="age" th:value="${user.getAge()}" pattern="^[0-9]+$" id="ageEdit" placeholder="age" required>
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label for="usernameEdit" class="control-label">username</label>
-                                                                            <input type="text" class="form-control" name="username" th:value="${user.getUsername()}" pattern="^[a-zA-Z]+$" id="usernameEdit" placeholder="username" required>
+                                                                            <label for="emailEdit" class="control-label">email</label>
+                                                                            <input type="text" class="form-control" name="email" th:value="${user.getUsername()}" pattern="^[a-zA-Z]+$" id="emailEdit" placeholder="email" required>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label for="passwordEdit" class="control-label">password</label>
@@ -214,7 +215,7 @@
                                                                                             value="" pattern="^[a-zA-Z]+$" id="lastname"
                                                                                             placeholder="Lastname" required></p>
                                                     <p><label for="age"></label><input type="number" min="1" name="age" value="" pattern="^[0-9]+$" id="age" placeholder="Age" required></p>
-                                                    <p><label for="username"></label><input type="text" name="username" value="" pattern="^[a-zA-Z]+$" id="username" placeholder="Username" required></p>
+                                                    <p><label for="email"></label><input type="text" name="email" value="" pattern="^[a-zA-Z]+$" id="email" placeholder="Email" required></p>
                                                     <p><label for="password"></label><input type="text" name="password" value="" pattern="^[a-zA-Z0-9]+$" id="password" placeholder="Password" required></p>
                                                     <label for="roles" th:each="role: ${userRoles}">
                                                         <input id="roles" th:data-th-text="${role.role}" name="roles" type="radio" th:value="${role.role}" required>
@@ -243,7 +244,7 @@
                                 <th style="color:black" scope="col">Name</th>
                                 <th style="color:black" scope="col">Lastname</th>
                                 <th style="color:black" scope="col">Age</th>
-                                <th style="color:black" scope="col">Username</th>
+                                <th style="color:black" scope="col">Email</th>
                                 <th style="color:black" scope="col">Role</th>
 
                             </tr>
@@ -254,7 +255,7 @@
                                 <td style="color:black"  th:text="${mainUser.getName()}"/>
                                 <td style="color:black"  th:text="${mainUser.getLastname()}"/>
                                 <td style="color:black"  th:text="${mainUser.getAge()}"/>
-                                <td style="color:black"  th:text="${mainUser.getUsername()}"/>
+                                <td style="color:black"  th:text="${mainUser.getEmail()}"/>
                                 <td style="color:black"  th:text="${mainUser.getRolesForWeb()}"/>
                             </tr>
                         </table>

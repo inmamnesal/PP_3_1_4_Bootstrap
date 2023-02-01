@@ -32,7 +32,7 @@ public class UserController {
 
     @PostMapping(value = "/user")
     public String changePassword(@RequestParam(value = "newPassword") String newPassword, Principal principal, ModelMap model){
-        User user = userService.findByUsername(principal.getName());
+        User user = userService.findByEmail(principal.getName());
         user = userService.getPrincipalUser();
         user.setPassword(userService.encode(newPassword));
         userService.updateUser(user);
